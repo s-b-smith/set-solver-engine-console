@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetSolverEngineConsole", "SetSolverEngineConsole\SetSolverEngineConsole.csproj", "{090C6F5B-65F1-4C20-A8C9-5FEFC82735C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetSolverEngineConsole", "SetSolverEngineConsole\SetSolverEngineConsole.csproj", "{090C6F5B-65F1-4C20-A8C9-5FEFC82735C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetSolverEngineTests", "SetSolverEngineTests\SetSolverEngineTests.csproj", "{72E1D167-AF6C-4669-A013-A921A4BEEA93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{090C6F5B-65F1-4C20-A8C9-5FEFC82735C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090C6F5B-65F1-4C20-A8C9-5FEFC82735C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090C6F5B-65F1-4C20-A8C9-5FEFC82735C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E1D167-AF6C-4669-A013-A921A4BEEA93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E1D167-AF6C-4669-A013-A921A4BEEA93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E1D167-AF6C-4669-A013-A921A4BEEA93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E1D167-AF6C-4669-A013-A921A4BEEA93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
