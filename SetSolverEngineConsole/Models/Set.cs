@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SetSolverEngineConsole.Models
 {
-    internal class Set(Card card1, Card card2, Card card3)
+    public class Set(Card card1, Card card2, Card card3)
     {
         public readonly Card card1 = card1;
         public readonly Card card2 = card2;

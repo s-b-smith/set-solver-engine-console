@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SetSolverEngineConsole.Constants
 {
-    internal static class CardProps
+    public static class CardProps
     {
         public enum CardProp
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SetSolverEngineConsole.Models
 {
-    internal class Card(CardProps.COLOR color, CardProps.SHAPE shape, CardProps.NUM num, CardProps.SHADING shading)
+    public class Card(CardProps.COLOR color, CardProps.SHAPE shape, CardProps.NUM num, CardProps.SHADING shading)
     {
         public readonly CardProps.COLOR color = color;
         public readonly CardProps.SHAPE shape = shape;

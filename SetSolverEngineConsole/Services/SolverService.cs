@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SetSolverEngineConsole.Services
 {
-    internal class SolverService
+    public class SolverService
     {
         public SetSolverResult FindSets(Card[] cards)
         {
