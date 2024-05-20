@@ -11,6 +11,17 @@ namespace SetSolverEngineConsole.Models
         public readonly int numSets = numSets;
         public readonly HashSet<Set> sets = sets;
 
+        public override string ToString()
+        {
+            StringBuilder sb = new();
+
+            sb.Append($"{numSets} total set{(numSets > 1 ? "s" : "")}");
+            sb.Append('\n');
+            sb.Append(string.Join("\n\n", sets.ToList()));
+
+            return sb.ToString();
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is SetSolverResult solveResult
