@@ -15,9 +15,12 @@ namespace SetSolverEngineConsole.Models
         {
             StringBuilder sb = new();
 
-            sb.Append($"{numSets} total set{(numSets > 1 ? "s" : "")}");
-            sb.Append('\n');
-            sb.Append(string.Join("\n\n", sets.ToList()));
+            sb.Append($"{numSets} total set{(numSets == 1 ? "" : "s")}");
+            if (numSets != 0 )
+            {
+                sb.Append('\n');
+                sb.Append(string.Join("\n\n", sets.ToList()));
+            }
 
             return sb.ToString();
         }
