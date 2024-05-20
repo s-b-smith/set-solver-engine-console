@@ -26,5 +26,25 @@ namespace SetSolverEngineConsole.Models
 
             return string.Join(", ", values);
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Card card 
+                && color == card.color 
+                && shape == card.shape 
+                && num == card.num 
+                && shading == card.shading;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 7;
+            hash *= 7 * (int)color;
+            hash *= 8 * (int)shape;
+            hash *= 9 * (int)num;
+            hash *= 11 * (int)shading;
+
+            return hash;
+        }
     }
 }
