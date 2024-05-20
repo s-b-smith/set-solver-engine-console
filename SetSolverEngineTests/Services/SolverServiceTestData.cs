@@ -219,8 +219,58 @@ namespace SetSolverEngineTests.Services
                )
             );
 
-            // TODO: Need 3 more regular 12 card tests, 3 more no set 12 card tests, 2 15 card tests
-            // Keep in mind edge cases: no cards of single prop (or two props?), 6,9,18 card tests (2 each)
+            // TEST 8: 12 CARDS, 1 SET
+            yield return new TestDataSet([
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.ONE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED)
+            ], new SetSolverResult(1,
+                [
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.CIRCLE, NUM.THREE, SHADING.SHADED)
+                    ),
+                ]
+               )
+            );
+
+            // TEST 9: 12 CARDS, 1 SET
+            yield return new TestDataSet([
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.ONE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.TWO, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.ONE, SHADING.SHADED)
+            ], new SetSolverResult(1,
+                [
+                    new Set(
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID)
+                    ),
+                ]
+               )
+            );
+
+            // TODO: Need 3 no set 12 card tests, 2 15 card tests
+            // Keep in mind edge cases: no cards of single prop (or two props? 1 test each), 6,9,18 card tests (2 each)
         }
     }
 }
