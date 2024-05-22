@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SetSolverEngineConsole.Constants
+﻿namespace SetSolverEngineConsole.Constants
 {
     public static class CardProps
     {
@@ -16,7 +10,7 @@ namespace SetSolverEngineConsole.Constants
             SHADING,
         };
 
-        public enum COLOR 
+        public enum COLOR
         {
             RED,
             GREEN,

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace SetSolverEngineConsole.Models
 {
@@ -16,7 +12,7 @@ namespace SetSolverEngineConsole.Models
             StringBuilder sb = new();
 
             sb.Append($"{numSets} total set{(numSets == 1 ? "" : "s")}");
-            if (numSets != 0 )
+            if (numSets != 0)
             {
                 sb.Append('\n');
                 sb.Append(string.Join("\n\n", sets.ToList()));

@@ -434,7 +434,7 @@ namespace SetSolverEngineTests.Services
                 new(COLOR.PURPLE, SHAPE.OVAL, NUM.TWO, SHADING.EMPTY),
                 new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID),
                 new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY)
-            ], new SetSolverResult(3, 
+            ], new SetSolverResult(3,
                 [
                     new Set(
                         new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.SHADED),
@@ -570,7 +570,7 @@ namespace SetSolverEngineTests.Services
                 new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.SOLID),
                 new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
                 new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY)
-            ], new SetSolverResult(0,[])
+            ], new SetSolverResult(0, [])
             );
 
             // TEST 21: 18 CARDS, 13 SETS

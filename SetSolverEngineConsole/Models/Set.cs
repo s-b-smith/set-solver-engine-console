@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SetSolverEngineConsole.Models
+﻿namespace SetSolverEngineConsole.Models
 {
     public class Set(Card card1, Card card2, Card card3)
     {
