@@ -426,7 +426,249 @@ namespace SetSolverEngineTests.Services
                )
             );
 
-            // TODO: Need 2 no cards of single prop, 2 two props, 6,9,18 card tests (2 each)
+            // TEST 15: 12 CARDS, 3 SETS (NO "ONE" CARDS)
+            yield return new TestDataSet([
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY)
+            ], new SetSolverResult(3, 
+                [
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.SHADED),
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY)
+                    ),
+                    new Set(
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SHADED),
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID)
+                    ),
+                ]
+               )
+            );
+
+            // TEST 16: 12 CARDS, 2 SETS (NO "SHADED" CARDS)
+            yield return new TestDataSet([
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.ONE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID)
+            ], new SetSolverResult(2,
+                [
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID)
+                    ),
+                ]
+               )
+            );
+
+            // TEST 17: 12 CARDS, 1 SET (NO "PURPLE" OR "TWO" CARDS)
+            yield return new TestDataSet([
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.ONE, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED)
+            ], new SetSolverResult(1,
+                [
+                    new Set(
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID)
+                    ),
+                ]
+               )
+            );
+
+            // TEST 18: 12 CARDS, 2 SETS (NO "SQUIGGLE" OR "SHADED" CARDS)
+            yield return new TestDataSet([
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.ONE, SHADING.SOLID)
+            ], new SetSolverResult(2,
+                [
+                    new Set(
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.GREEN, SHAPE.CIRCLE, NUM.THREE, SHADING.SOLID)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                        new(COLOR.GREEN, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID)
+                    ),
+                ]
+               )
+            );
+
+            // TEST 19: 6 CARDS, 1 SET
+            yield return new TestDataSet([
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.CIRCLE, NUM.ONE, SHADING.SOLID)
+            ], new SetSolverResult(1,
+                [
+                    new Set(
+                        new(COLOR.RED, SHAPE.CIRCLE, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED)
+                    ),
+                ]
+               )
+            );
+
+            // TEST 20: 9 CARDS, 0 SETS
+            yield return new TestDataSet([
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.SHADED),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.TWO, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY)
+            ], new SetSolverResult(0,[])
+            );
+
+            // TEST 21: 18 CARDS, 13 SETS
+            yield return new TestDataSet([
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.ONE, SHADING.EMPTY),
+                new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.CIRCLE, NUM.TWO, SHADING.SHADED),
+                new(COLOR.GREEN, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID)
+            ], new SetSolverResult(13,
+                [
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.ONE, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY)
+                    ),
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID)
+                    ),
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED)
+                    ),
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.ONE, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SHADED),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                        new(COLOR.GREEN, SHAPE.CIRCLE, NUM.TWO, SHADING.SHADED),
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED)
+                    ),
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.ONE, SHADING.EMPTY),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.THREE, SHADING.EMPTY)
+                    ),
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID)
+                    ),
+                    new Set(
+                        new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.GREEN, SHAPE.CIRCLE, NUM.TWO, SHADING.SHADED),
+                        new(COLOR.PURPLE, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY)
+                    ),
+                    new Set(
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.SHADED),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.THREE, SHADING.SOLID)
+                    ),
+                    new Set(
+                        new(COLOR.GREEN, SHAPE.DIAMOND, NUM.ONE, SHADING.SOLID),
+                        new(COLOR.PURPLE, SHAPE.CIRCLE, NUM.TWO, SHADING.EMPTY),
+                        new(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SHADED)
+                    ),
+                ]
+               )
+            );
         }
     }
 }
