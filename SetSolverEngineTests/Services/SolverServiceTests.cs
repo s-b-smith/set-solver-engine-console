@@ -1,10 +1,4 @@
-using SetSolverEngineConsole.Constants;
-using SetSolverEngineConsole.Models;
 using SetSolverEngineConsole.Services;
-using System;
-using System.Collections;
-using System.Reflection;
-using System.Text;
 
 namespace SetSolverEngineTests.Services
 {

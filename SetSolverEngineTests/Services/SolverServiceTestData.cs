@@ -1,12 +1,6 @@
-﻿using SetSolverEngineConsole.Constants;
-using SetSolverEngineConsole.Models;
-using static SetSolverEngineConsole.Constants.CardProps;
-using SetSolverEngineConsole.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SetSolverEngineConsole.Models;
 using System.Text;
-using System.Threading.Tasks;
+using static SetSolverEngineConsole.Constants.CardProps;
 
 namespace SetSolverEngineTests.Services
 {
