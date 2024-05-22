@@ -25,7 +25,7 @@ namespace SetSolverEngineConsole.Constants
 
         public enum SHAPE
         {
-            CIRCLE,
+            OVAL,
             DIAMOND,
             SQUIGGLE,
         }
