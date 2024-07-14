@@ -5,12 +5,14 @@ using SetSolverEngineConsole.Services;
 var inputService = new InputService();
 var solverService = new SolverService();
 
-Console.WriteLine(DisplayStrings.getOpenTitle());
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+Console.WriteLine(DisplayStrings.GetOpenTitle());
 while (true)
 {
     try
     {
-        Console.WriteLine(DisplayStrings.getPrompt());
+        Console.WriteLine(DisplayStrings.GetPrompt());
         string? input = Console.ReadLine()?.Trim();
 
         if (input == null || input == "")
@@ -25,11 +27,21 @@ while (true)
         }
         else if (string.Equals(input, DisplayStrings.HELP_INPUT, StringComparison.OrdinalIgnoreCase))
         {
-            // TODO: Write help info
+            Console.WriteLine();
+            Console.WriteLine(DisplayStrings.GetHelp());
+            Console.WriteLine();
             continue;
         }
 
         string[] rawCardInputs = input.Split(' ');
+        if (rawCardInputs.Length > 100) 
+        {
+            Console.WriteLine();
+            Console.WriteLine(DisplayStrings.TOO_MANY_CARD_INPUTS);
+            Console.WriteLine();
+            continue;
+        }
+
         List<Card> cards = [];
         bool isCardsValidated = true;
         foreach (string cardInput in rawCardInputs)
