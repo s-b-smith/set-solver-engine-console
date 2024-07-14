@@ -12,11 +12,11 @@ namespace SetSolverEngineConsole.Services
             {
                 if (cardInput.Length > 4)
                 {
-                    return DisplayStrings.TOO_MANY_CHARACTERS;
+                    return DisplayStrings.TOO_MANY_CHARACTERS + $" ({cardInput})";
                 }
                 else
                 {
-                    return DisplayStrings.ARE_YOU_MISSING_INPUT;
+                    return DisplayStrings.ARE_YOU_MISSING_INPUT + $" ({cardInput})";
                 }
             }
 
@@ -27,19 +27,19 @@ namespace SetSolverEngineConsole.Services
 
             if (!colorRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_COLOR_GIVEN;
+                return DisplayStrings.NO_VALID_COLOR_GIVEN + $" ({cardInput})";
             }
             else if (!shapeRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_SHAPE_GIVEN;
+                return DisplayStrings.NO_VALID_SHAPE_GIVEN + $" ({cardInput})";
             }
             else if (!numRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_NUMBER_GIVEN;
+                return DisplayStrings.NO_VALID_NUMBER_GIVEN + $" ({cardInput})";
             }
             else if (!shadingRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_SHADING_GIVEN;
+                return DisplayStrings.NO_VALID_SHADING_GIVEN + $" ({cardInput})";
             }
 
             return "";
