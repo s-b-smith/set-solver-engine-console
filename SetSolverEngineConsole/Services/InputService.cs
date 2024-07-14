@@ -27,19 +27,19 @@ namespace SetSolverEngineConsole.Services
 
             if (!colorRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_COLOR_GIVEN;
+                return DisplayStrings.NO_VALID_COLOR_GIVEN;
             }
             else if (!shapeRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_SHAPE_GIVEN;
+                return DisplayStrings.NO_VALID_SHAPE_GIVEN;
             }
             else if (!numRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_NUMBER_GIVEN;
+                return DisplayStrings.NO_VALID_NUMBER_GIVEN;
             }
             else if (!shadingRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_SHADING_GIVEN;
+                return DisplayStrings.NO_VALID_SHADING_GIVEN;
             }
 
             return "";
@@ -47,6 +47,11 @@ namespace SetSolverEngineConsole.Services
 
         public Card GetCardFromInput(string cardInput)
         {
+            if (cardInput.Length != 4)
+            {
+                throw new ArgumentException(ExceptionStrings.InvalidCardInput(cardInput));
+            }
+
             CardProps.COLOR? color = null;
             CardProps.SHAPE? shape = null;
             CardProps.NUM? num = null;
@@ -72,21 +77,20 @@ namespace SetSolverEngineConsole.Services
                 }
                 else
                 {
-                    throw new ArgumentException($"Invalid card input given: \"{cardInput}\"");
+                    throw new ArgumentException(ExceptionStrings.InvalidCardInput(cardInput));
                 }
             }
 
             if (color == null || shape == null || num == null || shading == null)
             {
-                throw new ArgumentException($"Invalid card input given: \"{cardInput}\"");
+                throw new ArgumentException(ExceptionStrings.InvalidCardInput(cardInput));
             }
 
             return new Card(
                 (CardProps.COLOR)color, 
                 (CardProps.SHAPE)shape, 
                 (CardProps.NUM)num, 
-                (CardProps.SHADING)shading
-            );
+                (CardProps.SHADING)shading);
         }
     }
 
