@@ -12,11 +12,12 @@ while (true)
 {
     try
     {
-        Console.WriteLine(DisplayStrings.GetPrompt());
+        Console.Write(DisplayStrings.GetPrompt());
         string? input = Console.ReadLine()?.Trim();
 
         if (input == null || input == "")
         {
+            Console.WriteLine();
             Console.WriteLine(DisplayStrings.HELP_PROMPT);
             Console.WriteLine();
             continue;
@@ -34,7 +35,7 @@ while (true)
         }
 
         string[] rawCardInputs = input.Split(' ');
-        if (rawCardInputs.Length > EngineParams.MAX_NUM_CARDS_INPUT) 
+        if (rawCardInputs.Length > EngineParams.NUM_CARDS_IN_DECK) 
         {
             Console.WriteLine();
             Console.WriteLine(DisplayStrings.GetTooManyCardInputs());
@@ -42,7 +43,7 @@ while (true)
             continue;
         }
 
-        List<Card> cards = [];
+        HashSet<Card> cards = [];
         bool isInputsValid = true;
         foreach (string cardInput in rawCardInputs)
         {
@@ -57,7 +58,14 @@ while (true)
 
             try
             {
-                cards.Add(inputService.GetCardFromInput(cardInput.ToUpper()));
+                bool cardAdded = cards.Add(inputService.GetCardFromInput(cardInput.ToUpper()));
+                if (!cardAdded)
+                {
+                    isInputsValid = false;
+                    Console.WriteLine();
+                    Console.WriteLine(DisplayStrings.DUPLICATE_CARD_FOUND + $" ({cardInput})");
+                    break;
+                }
             }
             catch (ArgumentException e)
             {
