@@ -1,25 +1,91 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using SetSolverEngineConsole.Constants;
 using SetSolverEngineConsole.Models;
 using SetSolverEngineConsole.Services;
-using static SetSolverEngineConsole.Constants.CardProps;
 
-Card[] cards = [
-    new Card(COLOR.RED, SHAPE.OVAL, NUM.ONE, SHADING.EMPTY),
-    new Card(COLOR.RED, SHAPE.SQUIGGLE, NUM.ONE, SHADING.EMPTY),
-    new Card(COLOR.RED, SHAPE.DIAMOND, NUM.ONE, SHADING.EMPTY),
-    new Card(COLOR.RED, SHAPE.OVAL, NUM.TWO, SHADING.EMPTY),
-    new Card(COLOR.PURPLE, SHAPE.DIAMOND, NUM.TWO, SHADING.SHADED),
-    new Card(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.SOLID),
-    new Card(COLOR.RED, SHAPE.OVAL, NUM.THREE, SHADING.EMPTY),
-    new Card(COLOR.GREEN, SHAPE.OVAL, NUM.ONE, SHADING.SOLID),
-    new Card(COLOR.PURPLE, SHAPE.OVAL, NUM.ONE, SHADING.SHADED),
-    new Card(COLOR.RED, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY),
-    new Card(COLOR.PURPLE, SHAPE.DIAMOND, NUM.THREE, SHADING.SHADED),
-    new Card(COLOR.GREEN, SHAPE.SQUIGGLE, NUM.THREE, SHADING.EMPTY),
-];
-
+var inputService = new InputService();
 var solverService = new SolverService();
-var solveResult = solverService.FindSets(cards);
 
-Console.WriteLine(solveResult.ToString());
-Console.WriteLine("ALL DONE!");
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+Console.WriteLine(DisplayStrings.GetOpenTitle());
+while (true)
+{
+    try
+    {
+        Console.WriteLine(DisplayStrings.GetPrompt());
+        string? input = Console.ReadLine()?.Trim();
+
+        if (input == null || input == "")
+        {
+            Console.WriteLine(DisplayStrings.HELP_PROMPT);
+            Console.WriteLine();
+            continue;
+        }
+        else if (string.Equals(input, DisplayStrings.FINISHED_INPUT, StringComparison.OrdinalIgnoreCase))
+        {
+            break;
+        }
+        else if (string.Equals(input, DisplayStrings.HELP_INPUT, StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine();
+            Console.WriteLine(DisplayStrings.GetHelp());
+            Console.WriteLine();
+            continue;
+        }
+
+        string[] rawCardInputs = input.Split(' ');
+        if (rawCardInputs.Length > EngineParams.MAX_NUM_CARDS_INPUT) 
+        {
+            Console.WriteLine();
+            Console.WriteLine(DisplayStrings.GetTooManyCardInputs());
+            Console.WriteLine();
+            continue;
+        }
+
+        List<Card> cards = [];
+        bool isInputsValid = true;
+        foreach (string cardInput in rawCardInputs)
+        {
+            string validateMessage = inputService.ValidateCardInput(cardInput);
+            if (validateMessage != "")
+            {
+                isInputsValid = false;
+                Console.WriteLine();
+                Console.WriteLine(validateMessage);
+                break;
+            }
+
+            try
+            {
+                cards.Add(inputService.GetCardFromInput(cardInput.ToUpper()));
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine();
+                Console.WriteLine(ExceptionStrings.ArgumentError(e.Message));
+                Console.Write(DisplayStrings.PRESS_ANY_KEY_TO_CLOSE);
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+        }
+        if (!isInputsValid)
+        {
+            Console.WriteLine(DisplayStrings.HELP_PROMPT);
+            Console.WriteLine();
+            continue;
+        }
+
+        var solveResult = solverService.FindSets([.. cards]);
+        Console.WriteLine();
+        Console.WriteLine(solveResult.ToString());
+        Console.WriteLine();
+    } 
+    catch (Exception e)
+    {
+        Console.WriteLine();
+        Console.WriteLine(ExceptionStrings.SystemError(e.Message));
+        Console.Write(DisplayStrings.PRESS_ANY_KEY_TO_CLOSE);
+        Console.ReadKey();
+        Environment.Exit(0);
+    }
+}

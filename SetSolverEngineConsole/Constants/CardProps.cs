@@ -12,30 +12,30 @@
 
         public enum COLOR
         {
-            RED,
-            GREEN,
-            PURPLE,
+            RED = 'R',
+            GREEN = 'G',
+            PURPLE = 'P',
         };
 
         public enum SHAPE
         {
-            OVAL,
-            DIAMOND,
-            SQUIGGLE,
+            CIRCLE = 'C',
+            DIAMOND = 'D',
+            SQUIGGLE = 'Q',
         }
 
         public enum NUM
         {
-            ONE,
-            TWO,
-            THREE,
+            ONE = '1',
+            TWO = '2',
+            THREE = '3',
         }
 
         public enum SHADING
         {
-            EMPTY,
-            SHADED,
-            SOLID,
+            EMPTY = 'E',
+            STRIPED = 'T',
+            SOLID = 'S',
         }
     }
 }
