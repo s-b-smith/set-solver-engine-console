@@ -2,7 +2,6 @@
 using SetSolverEngineConsole.Models;
 using SetSolverEngineConsole.Services;
 
-// TODO: Prevent duplicates from being entered
 var inputService = new InputService();
 var solverService = new SolverService();
 
