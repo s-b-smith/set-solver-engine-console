@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Text;
+﻿using System.Text;
 
 namespace SetSolverEngineConsole.Constants
 {
@@ -8,7 +7,6 @@ namespace SetSolverEngineConsole.Constants
         public const string FINISHED_INPUT = "F";
         public const string HELP_INPUT = "H";
         public const string HELP_PROMPT = "Enter \"h\" for help";
-        public const string TOO_MANY_CARD_INPUTS = "Please enter only 100 cards at a time";
         public const string PRESS_ANY_KEY_TO_CLOSE = "Press any key to close this window . . .";
 
         public const string TOO_MANY_CHARACTERS = "Too many characters";
@@ -43,9 +41,13 @@ namespace SetSolverEngineConsole.Constants
             return $"Enter card(s), or \"{FINISHED_INPUT}\" if finished:";
         }
 
+        public static string GetTooManyCardInputs()
+        {
+            return $"Please enter only {EngineParams.MAX_NUM_CARDS_INPUT} cards at a time";
+        }
+
         public static string GetHelp()
         {
-            var copyrightSymbol = WebUtility.HtmlDecode("&copy;");
             StringBuilder sb = new();
 
             sb.AppendLine($"Each Set\u00a9 card can be described with 4 properties:");
@@ -81,6 +83,7 @@ namespace SetSolverEngineConsole.Constants
             sb.AppendLine();
             sb.AppendLine("For each card you may enter these properties in any order you like. " +
                 "Letters may be upper or lower case.");
+            sb.AppendLine("Please separate each card with a space.");
             sb.AppendLine();
             sb.AppendLine("EXAMPLES");
             sb.AppendLine();
@@ -89,15 +92,17 @@ namespace SetSolverEngineConsole.Constants
             sb.AppendLine("(Circle, Red, One, Empty), (Circle, Red, One, Striped), (Circle, Red, One, Solid)");
             sb.AppendLine();
             sb.AppendLine("12 cards:");
-            sb.AppendLine("GD3S RD3E PQ3E RD1E GC3E PD2S PC2E PD1E RD1T RQ2S GC2T PD1T");
+            sb.AppendLine("GD3S RD3E PQ3E D1ER C3EG D2SP 2EPC 1EPD 1TRD SRQ2 TGC2 TPD1");
             sb.AppendLine("(Green, Diamond, Three, Solid), (Red, Diamond, Three, Empty), " +
                 " (Purple, Squiggle, Three, Empty)");
-            sb.AppendLine("(Red, Diamond, One, Empty),     (Green, Circle, Three, Empty), " +
-                "(Purple, Diamond, Two, Solid)");
-            sb.AppendLine("(Purple, Circle, Two, Empty),   (Purple, Diamond, One, Empty), " +
-                "(Red, Diamond, One, Striped)");
-            sb.Append("(Red, Squiggle, Two, Solid),    (Green, Circle, Two, Striped), " +
-                "(Purple, Diamond, One, Striped)");
+            sb.AppendLine("(Diamond, One, Empty, Red),     (Circle, Three, Empty, Green), " +
+                "(Diamond, Two, Solid, Purple)");
+            sb.AppendLine("(Two, Empty, Purple, Circle),   (One, Empty, Purple, Diamond), " +
+                "(One, Striped, Red, Diamond)");
+            sb.AppendLine("(Solid, Red, Squiggle, Two),    (Striped, Green, Circle, Two), " +
+                "(Striped, Purple, Diamond, One)");
+            sb.AppendLine();
+            sb.Append("For rules on what qualifies as a set, visit \"https://en.wikipedia.org/wiki/Set_(card_game)\"");
 
             return sb.ToString();
         }

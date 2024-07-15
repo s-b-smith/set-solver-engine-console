@@ -34,22 +34,22 @@ while (true)
         }
 
         string[] rawCardInputs = input.Split(' ');
-        if (rawCardInputs.Length > 100) 
+        if (rawCardInputs.Length > EngineParams.MAX_NUM_CARDS_INPUT) 
         {
             Console.WriteLine();
-            Console.WriteLine(DisplayStrings.TOO_MANY_CARD_INPUTS);
+            Console.WriteLine(DisplayStrings.GetTooManyCardInputs());
             Console.WriteLine();
             continue;
         }
 
         List<Card> cards = [];
-        bool isCardsValidated = true;
+        bool isInputsValid = true;
         foreach (string cardInput in rawCardInputs)
         {
             string validateMessage = inputService.ValidateCardInput(cardInput);
             if (validateMessage != "")
             {
-                isCardsValidated = false;
+                isInputsValid = false;
                 Console.WriteLine();
                 Console.WriteLine(validateMessage);
                 break;
@@ -68,7 +68,7 @@ while (true)
                 Environment.Exit(0);
             }
         }
-        if (!isCardsValidated)
+        if (!isInputsValid)
         {
             Console.WriteLine(DisplayStrings.HELP_PROMPT);
             Console.WriteLine();
