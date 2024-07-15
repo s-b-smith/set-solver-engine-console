@@ -44,7 +44,7 @@ while (true)
             continue;
         }
 
-        List<Card> cards = [];
+        HashSet<Card> cards = [];
         bool isInputsValid = true;
         foreach (string cardInput in rawCardInputs)
         {
@@ -59,7 +59,14 @@ while (true)
 
             try
             {
-                cards.Add(inputService.GetCardFromInput(cardInput.ToUpper()));
+                bool cardAdded = cards.Add(inputService.GetCardFromInput(cardInput.ToUpper()));
+                if (!cardAdded)
+                {
+                    isInputsValid = false;
+                    Console.WriteLine();
+                    Console.WriteLine(DisplayStrings.DUPLICATE_CARD_FOUND + $" ({cardInput})");
+                    break;
+                }
             }
             catch (ArgumentException e)
             {

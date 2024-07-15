@@ -15,6 +15,7 @@ namespace SetSolverEngineConsole.Constants
         public const string NO_VALID_SHAPE_GIVEN = "No valid shape given";
         public const string NO_VALID_NUMBER_GIVEN = "No valid number given";
         public const string NO_VALID_SHADING_GIVEN = "No valid shading given";
+        public const string DUPLICATE_CARD_FOUND = "Duplicate card found";
 
         public static string GetOpenTitle()
         {
