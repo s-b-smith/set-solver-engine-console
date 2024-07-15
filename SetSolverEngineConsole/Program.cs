@@ -2,6 +2,7 @@
 using SetSolverEngineConsole.Models;
 using SetSolverEngineConsole.Services;
 
+// TODO: Prevent duplicates from being entered
 var inputService = new InputService();
 var solverService = new SolverService();
 
@@ -12,7 +13,7 @@ while (true)
 {
     try
     {
-        Console.WriteLine(DisplayStrings.GetPrompt());
+        Console.Write(DisplayStrings.GetPrompt());
         string? input = Console.ReadLine()?.Trim();
 
         if (input == null || input == "")
@@ -34,7 +35,7 @@ while (true)
         }
 
         string[] rawCardInputs = input.Split(' ');
-        if (rawCardInputs.Length > EngineParams.MAX_NUM_CARDS_INPUT) 
+        if (rawCardInputs.Length > EngineParams.NUM_CARDS_IN_DECK) 
         {
             Console.WriteLine();
             Console.WriteLine(DisplayStrings.GetTooManyCardInputs());

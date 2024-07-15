@@ -20,16 +20,18 @@ namespace SetSolverEngineConsole.Constants
         {
             StringBuilder sb = new();
 
-            sb.AppendLine("|||||||||||||||||||");
-            sb.AppendLine("|||||||||||||||||||");
-            sb.AppendLine("|||||-- SET --|||||");
-            sb.AppendLine("||||-- SOLVER --|||");
-            sb.AppendLine("|||||||||||||||||||");
-            sb.AppendLine("|||||||||||||||||||");
             sb.AppendLine();
-            sb.AppendLine("*******************");
-            sb.AppendLine();
-            sb.AppendLine("WELCOME!");
+            sb.AppendLine("   O/            \\O    ");
+            sb.AppendLine("  /|    WELCOME!  |\\   ");
+            sb.AppendLine("  / \\            / \\  ");
+            sb.AppendLine("***********************");
+            sb.AppendLine("|                     |");
+            sb.AppendLine("|                     |");
+            sb.AppendLine("|         SET         |");
+            sb.AppendLine("|        SOLVER       |");
+            sb.AppendLine("|                     |");
+            sb.AppendLine("|                     |");
+            sb.AppendLine("***********************");
             sb.AppendLine();
             sb.AppendLine(HELP_PROMPT);
 
@@ -38,12 +40,18 @@ namespace SetSolverEngineConsole.Constants
 
         public static string GetPrompt()
         {
-            return $"Enter card(s), or \"{FINISHED_INPUT}\" if finished:";
+            StringBuilder sb = new();
+
+            sb.AppendLine("----------------------------------------");
+            sb.AppendLine($"Enter cards, or \"{FINISHED_INPUT}\" if finished:");
+            sb.Append("> ");
+
+            return sb.ToString();
         }
 
         public static string GetTooManyCardInputs()
         {
-            return $"Please enter only {EngineParams.MAX_NUM_CARDS_INPUT} cards at a time";
+            return $"Too many cards entered, only {EngineParams.NUM_CARDS_IN_DECK} cards in the deck";
         }
 
         public static string GetHelp()
@@ -56,8 +64,9 @@ namespace SetSolverEngineConsole.Constants
             sb.AppendLine("3. Number of shapes");
             sb.AppendLine("4. Shading");
             sb.AppendLine();
-            sb.AppendLine("The Set Solver can take any number of cards (maximum 100) and calculate " +
-                "each possible set that can be formed.");
+            sb.AppendLine($"The Set Solver can take any number of cards in the deck " +
+                $"({EngineParams.NUM_CARDS_IN_DECK} cards total) and calculate each " +
+                $"possible set that can be formed.");
             sb.AppendLine("To enter the cards, each property above must be given for each card. The " +
                 "properties are encoded as follows:");
             sb.AppendLine();
