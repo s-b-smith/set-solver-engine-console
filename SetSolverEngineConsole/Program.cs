@@ -18,6 +18,7 @@ while (true)
 
         if (input == null || input == "")
         {
+            Console.WriteLine();
             Console.WriteLine(DisplayStrings.HELP_PROMPT);
             Console.WriteLine();
             continue;
