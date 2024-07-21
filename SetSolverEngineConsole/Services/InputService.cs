@@ -1,22 +1,23 @@
 ﻿using SetSolverEngineConsole.Constants;
 using SetSolverEngineConsole.Models;
 using System.Text.RegularExpressions;
+using static SetSolverEngineConsole.Constants.DisplayStrings;
 
 namespace SetSolverEngineConsole.Services
 {
-    public partial class InputService
+    public static partial class InputService
     {
-        public string ValidateCardInput(string cardInput)
+        public static string ValidateCardInput(string cardInput)
         {
-            if (cardInput.Length != 4)
+            if (cardInput.Length != CardProps.NumCardProps)
             {
-                if (cardInput.Length > 4)
+                if (cardInput.Length > CardProps.NumCardProps)
                 {
-                    return DisplayStrings.TOO_MANY_CHARACTERS + $" ({cardInput})";
+                    return GetDisplayStringWithUserInput(TOO_MANY_CHARACTERS, cardInput);
                 }
                 else
                 {
-                    return DisplayStrings.ARE_YOU_MISSING_INPUT + $" ({cardInput})";
+                    return GetDisplayStringWithUserInput(ARE_YOU_MISSING_INPUT, cardInput);
                 }
             }
 
@@ -27,27 +28,27 @@ namespace SetSolverEngineConsole.Services
 
             if (!colorRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_COLOR_GIVEN + $" ({cardInput})";
+                return GetDisplayStringWithUserInput(NO_VALID_COLOR_GIVEN, cardInput); ;
             }
             else if (!shapeRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_SHAPE_GIVEN + $" ({cardInput})";
+                return GetDisplayStringWithUserInput(NO_VALID_SHAPE_GIVEN, cardInput); ;
             }
             else if (!numRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_NUMBER_GIVEN + $" ({cardInput})";
+                return GetDisplayStringWithUserInput(NO_VALID_NUMBER_GIVEN, cardInput); ;
             }
             else if (!shadingRegex.IsMatch(cardInput))
             {
-                return DisplayStrings.NO_VALID_SHADING_GIVEN + $" ({cardInput})";
+                return GetDisplayStringWithUserInput(NO_VALID_SHADING_GIVEN, cardInput); ;
             }
 
-            return "";
+            return string.Empty;
         }
 
-        public Card GetCardFromInput(string cardInput)
+        public static Card GetCardFromInput(string cardInput)
         {
-            if (cardInput.Length != 4)
+            if (cardInput.Length != CardProps.NumCardProps)
             {
                 throw new ArgumentException(ExceptionStrings.InvalidCardInput(cardInput));
             }
@@ -94,7 +95,7 @@ namespace SetSolverEngineConsole.Services
         }
     }
 
-    public partial class InputService
+    public static partial class InputService
     {
         [GeneratedRegex(@"R|G|P", RegexOptions.IgnoreCase, "en-US")]    // Red, Green, Purple
         private static partial Regex ColorInputRegex();

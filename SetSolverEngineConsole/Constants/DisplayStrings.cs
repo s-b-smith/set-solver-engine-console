@@ -116,5 +116,10 @@ namespace SetSolverEngineConsole.Constants
 
             return sb.ToString();
         }
+
+        public static string GetDisplayStringWithUserInput(string displayString, string userInput)
+        {
+            return displayString + $" ({userInput})";
+        }
     }
 }

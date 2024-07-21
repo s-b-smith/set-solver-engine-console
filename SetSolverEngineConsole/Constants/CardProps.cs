@@ -10,6 +10,8 @@
             SHADING,
         };
 
+        public static readonly int NumCardProps = Enum.GetNames(typeof(CardProp)).Length;
+
         public enum COLOR
         {
             RED = 'R',

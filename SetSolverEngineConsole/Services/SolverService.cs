@@ -3,9 +3,9 @@ using static SetSolverEngineConsole.Constants.CardProps;
 
 namespace SetSolverEngineConsole.Services
 {
-    public class SolverService
+    public static class SolverService
     {
-        public SetSolverResult FindSets(Card[] cards)
+        public static SetSolverResult FindSets(Card[] cards)
         {
             List<Set> sets = [];
             for (int i = 0; i < cards.Length - 2; i++)
@@ -29,7 +29,7 @@ namespace SetSolverEngineConsole.Services
             return new SetSolverResult(sets.Count, [.. sets]);
         }
 
-        private bool CheckAllProps(Set set)
+        private static bool CheckAllProps(Set set)
         {
             foreach (CardProp prop in Enum.GetValues(typeof(CardProp)))
             {
@@ -42,7 +42,7 @@ namespace SetSolverEngineConsole.Services
             return true;
         }
 
-        private bool IsPropAllSame(Set set, CardProp prop)
+        private static bool IsPropAllSame(Set set, CardProp prop)
         {
             switch (prop)
             {
@@ -61,7 +61,7 @@ namespace SetSolverEngineConsole.Services
             return false;
         }
 
-        private bool IsPropAllDifferent(Set set, CardProp prop)
+        private static bool IsPropAllDifferent(Set set, CardProp prop)
         {
             switch (prop)
             {

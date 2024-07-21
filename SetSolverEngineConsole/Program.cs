@@ -1,35 +1,33 @@
 ﻿using SetSolverEngineConsole.Constants;
 using SetSolverEngineConsole.Models;
 using SetSolverEngineConsole.Services;
-
-var inputService = new InputService();
-var solverService = new SolverService();
+using static SetSolverEngineConsole.Constants.DisplayStrings;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-Console.WriteLine(DisplayStrings.GetOpenTitle());
+Console.WriteLine(GetOpenTitle());
 while (true)
 {
     try
     {
-        Console.Write(DisplayStrings.GetPrompt());
+        Console.Write(GetPrompt());
         string? input = Console.ReadLine()?.Trim();
 
-        if (input == null || input == "")
-        {
-            Console.WriteLine();
-            Console.WriteLine(DisplayStrings.HELP_PROMPT);
-            Console.WriteLine();
-            continue;
-        }
-        else if (string.Equals(input, DisplayStrings.FINISHED_INPUT, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(input, FINISHED_INPUT, StringComparison.OrdinalIgnoreCase))
         {
             break;
         }
-        else if (string.Equals(input, DisplayStrings.HELP_INPUT, StringComparison.OrdinalIgnoreCase))
+        else if (input == null || input == string.Empty)
         {
             Console.WriteLine();
-            Console.WriteLine(DisplayStrings.GetHelp());
+            Console.WriteLine(HELP_PROMPT);
+            Console.WriteLine();
+            continue;
+        }
+        else if (string.Equals(input, HELP_INPUT, StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine();
+            Console.WriteLine(GetHelp());
             Console.WriteLine();
             continue;
         }
@@ -38,7 +36,7 @@ while (true)
         if (rawCardInputs.Length > EngineParams.NUM_CARDS_IN_DECK) 
         {
             Console.WriteLine();
-            Console.WriteLine(DisplayStrings.GetTooManyCardInputs());
+            Console.WriteLine(GetTooManyCardInputs());
             Console.WriteLine();
             continue;
         }
@@ -47,8 +45,8 @@ while (true)
         bool isInputsValid = true;
         foreach (string cardInput in rawCardInputs)
         {
-            string validateMessage = inputService.ValidateCardInput(cardInput);
-            if (validateMessage != "")
+            string validateMessage = InputService.ValidateCardInput(cardInput);
+            if (validateMessage != string.Empty)
             {
                 isInputsValid = false;
                 Console.WriteLine();
@@ -58,12 +56,12 @@ while (true)
 
             try
             {
-                bool cardAdded = cards.Add(inputService.GetCardFromInput(cardInput.ToUpper()));
+                bool cardAdded = cards.Add(InputService.GetCardFromInput(cardInput.ToUpper()));
                 if (!cardAdded)
                 {
                     isInputsValid = false;
                     Console.WriteLine();
-                    Console.WriteLine(DisplayStrings.DUPLICATE_CARD_FOUND + $" ({cardInput})");
+                    Console.WriteLine(GetDisplayStringWithUserInput(DUPLICATE_CARD_FOUND, cardInput));
                     break;
                 }
             }
@@ -71,19 +69,19 @@ while (true)
             {
                 Console.WriteLine();
                 Console.WriteLine(ExceptionStrings.ArgumentError(e.Message));
-                Console.Write(DisplayStrings.PRESS_ANY_KEY_TO_CLOSE);
+                Console.Write(PRESS_ANY_KEY_TO_CLOSE);
                 Console.ReadKey();
                 Environment.Exit(0);
             }
         }
         if (!isInputsValid)
         {
-            Console.WriteLine(DisplayStrings.HELP_PROMPT);
+            Console.WriteLine(HELP_PROMPT);
             Console.WriteLine();
             continue;
         }
 
-        var solveResult = solverService.FindSets([.. cards]);
+        var solveResult = SolverService.FindSets([.. cards]);
         Console.WriteLine();
         Console.WriteLine(solveResult.ToString());
         Console.WriteLine();
@@ -92,7 +90,7 @@ while (true)
     {
         Console.WriteLine();
         Console.WriteLine(ExceptionStrings.SystemError(e.Message));
-        Console.Write(DisplayStrings.PRESS_ANY_KEY_TO_CLOSE);
+        Console.Write(PRESS_ANY_KEY_TO_CLOSE);
         Console.ReadKey();
         Environment.Exit(0);
     }
