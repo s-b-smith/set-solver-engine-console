@@ -16,7 +16,7 @@ namespace SetSolverEngineConsole.Models
             List<object> values = [];
             foreach (FieldInfo field in fields)
             {
-                values.Add(field.GetValue(this));
+                values.Add(field.GetValue(this)!);
             }
 
             return string.Join(", ", values);
