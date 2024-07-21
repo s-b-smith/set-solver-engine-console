@@ -6,20 +6,12 @@ namespace SetSolverEngineTests.Services
 {
     public class InputServiceTests
     {
-        private InputService _inputService;
-
-        [SetUp]
-        public void Setup()
-        {
-            _inputService = new InputService();
-        }
-
         [Test]
         public void ValidateCardInputTest_Valid1()
         {
             // Purple, Diamond, One, Empty
             var cardInput = "PD1E";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(""));
         }
@@ -29,7 +21,7 @@ namespace SetSolverEngineTests.Services
         {
             // Squiggle, Green, Striped, Two
             var cardInput = "QGT2";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(""));
         }
@@ -39,7 +31,7 @@ namespace SetSolverEngineTests.Services
         {
             // Three, Solid, Red, Circle
             var cardInput = "3SRC";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(""));
         }
@@ -49,7 +41,7 @@ namespace SetSolverEngineTests.Services
         {
             // Green, Circle, Two, Striped
             var cardInput = "Gc2t";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(""));
         }
@@ -59,7 +51,7 @@ namespace SetSolverEngineTests.Services
         {
             // NA, Diamond, Three, Empty
             var cardInput = "D3e";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(DisplayStrings.ARE_YOU_MISSING_INPUT + $" ({cardInput})"));
         }
@@ -69,7 +61,7 @@ namespace SetSolverEngineTests.Services
         {
             // Red, Circle, Squiggle, Two, Striped
             var cardInput = "RCq2t";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(DisplayStrings.TOO_MANY_CHARACTERS + $" ({cardInput})"));
         }
@@ -79,7 +71,7 @@ namespace SetSolverEngineTests.Services
         {
             // INVALID, Squiggle, Three, Solid
             var cardInput = "xQ3s";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_COLOR_GIVEN + $" ({cardInput})"));
         }
@@ -89,7 +81,7 @@ namespace SetSolverEngineTests.Services
         {
             // Green, INVALID, One, Empty
             var cardInput = "go1e";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_SHAPE_GIVEN + $" ({cardInput})"));
         }
@@ -99,7 +91,7 @@ namespace SetSolverEngineTests.Services
         {
             // Purple, Diamond, INVALID, Striped
             var cardInput = "PD,T";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_NUMBER_GIVEN + $" ({cardInput})"));
         }
@@ -109,7 +101,7 @@ namespace SetSolverEngineTests.Services
         {
             // Red, Squiggle, Two, INVALID
             var cardInput = "Rq2@";
-            var result = _inputService.ValidateCardInput(cardInput);
+            var result = InputService.ValidateCardInput(cardInput);
 
             Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_SHADING_GIVEN + $" ({cardInput})"));
         }
@@ -119,7 +111,7 @@ namespace SetSolverEngineTests.Services
         {
             // Red, Diamond, One, Striped
             var cardInput = "RD1T";
-            var result = _inputService.GetCardFromInput(cardInput);
+            var result = InputService.GetCardFromInput(cardInput);
 
             Assert.That(result, Is.EqualTo(
                 new Card(CardProps.COLOR.RED, CardProps.SHAPE.DIAMOND, CardProps.NUM.ONE, CardProps.SHADING.STRIPED)));
@@ -130,7 +122,7 @@ namespace SetSolverEngineTests.Services
         {
             // Green, Squiggle, Two, Solid
             var cardInput = "GQ2S";
-            var result = _inputService.GetCardFromInput(cardInput);
+            var result = InputService.GetCardFromInput(cardInput);
 
             Assert.That(result, Is.EqualTo(
                 new Card(CardProps.COLOR.GREEN, CardProps.SHAPE.SQUIGGLE, CardProps.NUM.TWO, CardProps.SHADING.SOLID)));
@@ -141,7 +133,7 @@ namespace SetSolverEngineTests.Services
         {
             // Purple, Circle, Three, Empty
             var cardInput = "PC3E";
-            var result = _inputService.GetCardFromInput(cardInput);
+            var result = InputService.GetCardFromInput(cardInput);
 
             Assert.That(result, Is.EqualTo(
                 new Card(CardProps.COLOR.PURPLE, CardProps.SHAPE.CIRCLE, CardProps.NUM.THREE, CardProps.SHADING.EMPTY)));
@@ -153,7 +145,7 @@ namespace SetSolverEngineTests.Services
             // Red, NA, Two, Solid
             var cardInput = "R2S";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
 
@@ -163,7 +155,7 @@ namespace SetSolverEngineTests.Services
             // Green, Diamond, Squiggle, One, Striped
             var cardInput = "GDq1t";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
 
@@ -173,7 +165,7 @@ namespace SetSolverEngineTests.Services
             // INVALID, Squiggle, Two, Empty
             var cardInput = "XQ2E";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
 
@@ -183,7 +175,7 @@ namespace SetSolverEngineTests.Services
             // Red, INVALID, Three, Solid
             var cardInput = "R*3S";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
 
@@ -193,7 +185,7 @@ namespace SetSolverEngineTests.Services
             // Purple, Diamond, INVALID, Striped
             var cardInput = "PD.T";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
 
@@ -203,7 +195,7 @@ namespace SetSolverEngineTests.Services
             // Green, Circle, One, INVALID
             var cardInput = "GC1M";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
 
@@ -213,7 +205,7 @@ namespace SetSolverEngineTests.Services
             // Red, Purple, Two, Solid
             var cardInput = "RP2S";
 
-            Assert.That(() => _inputService.GetCardFromInput(cardInput),
+            Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
     }
