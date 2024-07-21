@@ -18,7 +18,8 @@ namespace SetSolverEngineConsole.Services
                         Card card2 = cards[j];
                         Card card3 = cards[k];
                         Set set = new(card1, card2, card3);
-                        if (CheckAllProps(set))
+
+                        if (DoCardsQualifyAsSet(set))
                         {
                             sets.Add(set);
                         }
@@ -29,11 +30,11 @@ namespace SetSolverEngineConsole.Services
             return new SetSolverResult(sets.Count, [.. sets]);
         }
 
-        private static bool CheckAllProps(Set set)
+        private static bool DoCardsQualifyAsSet(Set set)
         {
             foreach (CardProp prop in Enum.GetValues(typeof(CardProp)))
             {
-                if (!IsPropAllSame(set, prop) && !IsPropAllDifferent(set, prop))
+                if (!IsPropSameForAllCards(set, prop) && !IsPropDifferentForAllCards(set, prop))
                 {
                     return false;
                 }
@@ -42,7 +43,7 @@ namespace SetSolverEngineConsole.Services
             return true;
         }
 
-        private static bool IsPropAllSame(Set set, CardProp prop)
+        private static bool IsPropSameForAllCards(Set set, CardProp prop)
         {
             switch (prop)
             {
@@ -61,7 +62,7 @@ namespace SetSolverEngineConsole.Services
             return false;
         }
 
-        private static bool IsPropAllDifferent(Set set, CardProp prop)
+        private static bool IsPropDifferentForAllCards(Set set, CardProp prop)
         {
             switch (prop)
             {
