@@ -56,14 +56,16 @@ while (true)
 
             try
             {
-                bool cardAdded = cards.Add(InputService.GetCardFromInput(cardInput.ToUpper()));
-                if (!cardAdded)
+                Card newCard = InputService.GetCardFromInput(cardInput.ToUpper());
+                if (InputService.IsCardDuplicateInCollection(newCard, cards))
                 {
                     isInputsValid = false;
                     Console.WriteLine();
                     Console.WriteLine(GetDisplayStringWithUserInput(DUPLICATE_CARD_FOUND, cardInput));
                     break;
                 }
+
+                cards.Add(newCard);
             }
             catch (ArgumentException e)
             {

@@ -93,6 +93,11 @@ namespace SetSolverEngineConsole.Services
                 (CardProps.NUM)num, 
                 (CardProps.SHADING)shading);
         }
+
+        public static bool IsCardDuplicateInCollection(Card card, ICollection<Card> collection)
+        {
+            return collection.Contains(card);
+        }
     }
 
     public static partial class InputService

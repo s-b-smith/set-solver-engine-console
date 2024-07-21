@@ -209,5 +209,37 @@ namespace SetSolverEngineTests.Services
             Assert.That(() => InputService.GetCardFromInput(cardInput),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo(ExceptionStrings.InvalidCardInput(cardInput)));
         }
+
+        [Test]
+        public void IsCardDuplicateInCollectionTest_IsDuplicateReturnTrue()
+        {
+            Card card = new(CardProps.COLOR.RED, CardProps.SHAPE.DIAMOND, CardProps.NUM.THREE, 
+                CardProps.SHADING.EMPTY);
+            List<Card> cardCollection = [
+                new(CardProps.COLOR.RED, CardProps.SHAPE.DIAMOND, CardProps.NUM.THREE, CardProps.SHADING.EMPTY)];
+
+            Assert.That(InputService.IsCardDuplicateInCollection(card, cardCollection), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void IsCardDuplicateInCollectionTest_IsNotDuplicateReturnFalse()
+        {
+            Card card = new(CardProps.COLOR.GREEN, CardProps.SHAPE.SQUIGGLE, CardProps.NUM.TWO,
+                CardProps.SHADING.SOLID);
+            List<Card> cardCollection = [
+                new(CardProps.COLOR.RED, CardProps.SHAPE.DIAMOND, CardProps.NUM.THREE, CardProps.SHADING.EMPTY)];
+
+            Assert.That(InputService.IsCardDuplicateInCollection(card, cardCollection), Is.EqualTo(false));
+        }
+
+        [Test]
+        public void IsCardDuplicateInCollectionTest_EmptyCollectionReturnFalse()
+        {
+            Card card = new(CardProps.COLOR.GREEN, CardProps.SHAPE.SQUIGGLE, CardProps.NUM.TWO,
+                CardProps.SHADING.SOLID);
+            List<Card> cardCollection = [];
+
+            Assert.That(InputService.IsCardDuplicateInCollection(card, cardCollection), Is.EqualTo(false));
+        }
     }
 }
