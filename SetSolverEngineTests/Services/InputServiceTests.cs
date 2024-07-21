@@ -1,6 +1,7 @@
 ﻿using SetSolverEngineConsole.Constants;
 using SetSolverEngineConsole.Models;
 using SetSolverEngineConsole.Services;
+using static SetSolverEngineConsole.Constants.DisplayStrings;
 
 namespace SetSolverEngineTests.Services
 {
@@ -53,7 +54,7 @@ namespace SetSolverEngineTests.Services
             var cardInput = "D3e";
             var result = InputService.ValidateCardInput(cardInput);
 
-            Assert.That(result, Is.EqualTo(DisplayStrings.ARE_YOU_MISSING_INPUT + $" ({cardInput})"));
+            Assert.That(result, Is.EqualTo(GetDisplayStringWithUserInput(ARE_YOU_MISSING_INPUT, cardInput)));
         }
 
         [Test]
@@ -63,7 +64,7 @@ namespace SetSolverEngineTests.Services
             var cardInput = "RCq2t";
             var result = InputService.ValidateCardInput(cardInput);
 
-            Assert.That(result, Is.EqualTo(DisplayStrings.TOO_MANY_CHARACTERS + $" ({cardInput})"));
+            Assert.That(result, Is.EqualTo(GetDisplayStringWithUserInput(TOO_MANY_CHARACTERS, cardInput)));
         }
 
         [Test]
@@ -73,7 +74,7 @@ namespace SetSolverEngineTests.Services
             var cardInput = "xQ3s";
             var result = InputService.ValidateCardInput(cardInput);
 
-            Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_COLOR_GIVEN + $" ({cardInput})"));
+            Assert.That(result, Is.EqualTo(GetDisplayStringWithUserInput(NO_VALID_COLOR_GIVEN, cardInput)));
         }
 
         [Test]
@@ -83,7 +84,7 @@ namespace SetSolverEngineTests.Services
             var cardInput = "go1e";
             var result = InputService.ValidateCardInput(cardInput);
 
-            Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_SHAPE_GIVEN + $" ({cardInput})"));
+            Assert.That(result, Is.EqualTo(GetDisplayStringWithUserInput(NO_VALID_SHAPE_GIVEN, cardInput)));
         }
 
         [Test]
@@ -93,7 +94,7 @@ namespace SetSolverEngineTests.Services
             var cardInput = "PD,T";
             var result = InputService.ValidateCardInput(cardInput);
 
-            Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_NUMBER_GIVEN + $" ({cardInput})"));
+            Assert.That(result, Is.EqualTo(GetDisplayStringWithUserInput(NO_VALID_NUMBER_GIVEN, cardInput)));
         }
 
         [Test]
@@ -103,7 +104,7 @@ namespace SetSolverEngineTests.Services
             var cardInput = "Rq2@";
             var result = InputService.ValidateCardInput(cardInput);
 
-            Assert.That(result, Is.EqualTo(DisplayStrings.NO_VALID_SHADING_GIVEN + $" ({cardInput})"));
+            Assert.That(result, Is.EqualTo(GetDisplayStringWithUserInput(NO_VALID_SHADING_GIVEN, cardInput)));
         }
 
         [Test]
